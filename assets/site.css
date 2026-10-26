@@ -142,8 +142,8 @@ body:has(.events){background:var(--bg-3)}
   .burger li{padding:7px 0}
   .burger a{font:600 13px var(--ui);letter-spacing:2px;text-transform:uppercase;color:var(--tan);text-decoration:none}
   .logo img{width:64px}
-  .grid{grid-template-columns:1fr;gap:48px;padding-left:16px;padding-right:16px}
-  .grid,.events,.post,.event,.page,.intro{padding-left:16px;padding-right:16px}
+  .grid{grid-template-columns:1fr;gap:48px;padding-left:6vw;padding-right:6vw}
+  .grid,.events,.post,.event,.page,.intro{padding-left:6vw;padding-right:6vw}
   .row{flex-direction:column;gap:0}
   .ev{grid-template-columns:1fr;gap:14px}
   .ev-grid{grid-template-columns:1fr;gap:10px}
