@@ -8,7 +8,7 @@ per line) and a body. Bodies with `format: "html"` are used as is; any other bod
 and a line `[audio: /media/audio/file.mp3 | Title]` for an audio player).
 Standard library only.
 """
-import datetime, glob, html, json, os, re, shutil, sys
+import datetime, glob, html, json, os, re, shutil, sys, urllib.parse
 from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,6 +78,11 @@ def dt(ms): return datetime.datetime.fromtimestamp(ms / 1000, TZ)
 def long_date(ms): d = dt(ms); return f'{d:%B} {d.day}, {d.year}'
 def short_date(ms): d = dt(ms); return f'{d.month}/{d.day}/{d:%y}'
 def base_name(path): return re.sub(r'^[0-9a-f]{6}-', '', os.path.basename(path)).rsplit('.', 1)[0].lower()
+def where_html(e):
+    parts = [x for x in (e.get('venue'), e.get('address')) if x]
+    if not parts: return ''
+    q = urllib.parse.quote_plus(', '.join(parts))
+    return f'<p class="where">{E(", ".join(parts))} <a class="maplink" href="https://maps.google.com?q={q}" target="_blank" rel="noopener">(map)</a></p>'
 def month_day(ms): d = dt(ms); return f'{d:%B} {d.day}'
 def clock(ms): d = dt(ms); return f'{d.hour % 12 or 12}:{d:%M} {"AM" if d.hour < 12 else "PM"}'
 def audio_url(h):
@@ -108,9 +113,8 @@ def nav_html(active):
 ICONS = {'Facebook': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.2v3h2.4V21z"/></svg>',
          'Instagram': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM20.9 7.6c-.1-1.5-.4-2.8-1.5-3.9S17 2.2 15.5 2.1c-1.5-.1-6-.1-7.5 0-1.5.1-2.8.4-3.9 1.5S2.7 6.1 2.6 7.6c-.1 1.5-.1 6 0 7.5.1 1.5.4 2.8 1.5 3.9s2.4 1.4 3.9 1.5c1.5.1 6 .1 7.5 0 1.5-.1 2.8-.4 3.9-1.5s1.4-2.4 1.5-3.9c.1-1.5.1-6 0-7.5z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>'}
 
-def layout(title, body, url, active='', banner=None, description=None, image=None, noindex=False, extra_head=''):
+def layout(title, body, url, active='', banner=None, description=None, image=None, noindex=False, extra_head='', hero=False):
     full_title = f'{title} — {CFG["title"]}' if title and title != CFG['title'] else CFG['title']
-    full_title = full_title.replace(' — ', ' | ')
     desc = description or CFG['description']
     canon = CFG['base_url'] + (url if url != '/' else '')
     og_img = CFG['base_url'] + (image or ASSETS['banner'])
@@ -124,7 +128,7 @@ def layout(title, body, url, active='', banner=None, description=None, image=Non
 <meta property="og:title" content="{E(title or CFG['title'])}"><meta property="og:description" content="{E(desc)}"><meta property="og:image" content="{E(og_img)}"><meta property="og:url" content="{canon}"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{ASSETS.get('favicon') or ASSETS['logo']}"><link rel="alternate" type="application/rss+xml" title="Half Wild Field Journal" href="/feed.xml">
 {FONTS}<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">{extra_head}</head>
-<body class="{'has-banner' if banner else 'no-banner'}">
+<body class="{'has-banner' if (banner or hero) else 'no-banner'}">
 <header class="site-header"><a class="logo" href="/"><img src="{ASSETS['logo']}" alt="Half Wild"></a>{nav_html(active)}</header>
 {ban}<main>{body}</main>
 <footer class="site-footer"><div class="social">{social}</div><div class="flinks">{flinks}</div></footer>
@@ -193,35 +197,39 @@ def build():
                 f'{prevnext(posts, i, lambda o: long_date(o["published"]))}</article>')
         write(p['url'], layout(p['title'], body, p['url'], '/', description=p.get('excerpt'), image=p.get('image')))
 
-    # category pages
+    # category pages: banner with the intro overlaid at left, then a three-column summary grid
     for cat, url in CFG['category_pages'].items():
         pg = pages.get(url, {'title': cat, 'html': f'<h1>{E(cat)}</h1>'})
         items = [p for p in posts if cat in (p.get('categories') or [])]
-        lst = grid(items) if items else '<p class="empty">New pieces are on the way.</p>'
-        write(url, layout(pg['title'], f'<div class="intro">{pg["html"]}</div>{lst}', url, url, banner=pg.get('banner'), description=pg.get('description')))
+        cards = ''.join(
+            f'<article class="sum">' + (f'<a class="sum-thumb" href="{p["url"]}"><img src="{p["image"]}" alt="" loading="lazy"></a>' if p.get('image') else '') +
+            f'<h2 class="sum-title"><a href="{p["url"]}">{E(p["title"])}</a></h2>' +
+            (f'<p class="sum-excerpt">{E(p["excerpt"])}</p>' if p.get('excerpt') else '') +
+            f'<p class="sum-date">{long_date(p["published"])}</p></article>' for p in items)
+        hero = f'<section class="cat-hero" style="background-image:url(\'{E(pg.get("banner") or ASSETS["banner"])}\')"><div class="cat-intro">{pg["html"]}</div></section>'
+        body = hero + (f'<section class="sumgrid">{cards}</section>' if cards else '<section class="sumgrid empty"></section>')
+        write(url, layout(pg['title'], body, url, url, description=pg.get('description'), hero=True))
 
     # events list
     rows = []
     now = datetime.datetime.now(TZ).timestamp() * 1000
     for e in events:
         d = dt(e['start'])
+        past = ' past' if e['end'] < now else ''
         img = f'<a class="ev-thumb" href="{e["url"]}"><img src="{e["image"]}" alt="" loading="lazy"><span class="datetag"><b>{d:%b}</b><i>{d.day}</i></span></a>' if e.get('image') else ''
-        where = E(', '.join(x for x in (e.get('venue'), e.get('address')) if x))
-        rows.append(f'<article class="ev">{img}<div class="ev-text"><h2><a href="{e["url"]}">{E(e["title"])}</a></h2>'
-                    f'<p class="when">{long_date(e["start"])}, {clock(e["start"])} – {clock(e["end"])}</p>'
-                    f'{f"<p class=where>{where}</p>" if where else ""}<a class="btn" href="{e["url"]}">View Event →</a></div></article>')
+        rows.append(f'<article class="ev{past}">{img}<div class="ev-text"><h2><a href="{e["url"]}">{E(e["title"])}</a></h2>'
+                    f'<p class="when">{clock(e["start"])} – {clock(e["end"])}</p>{where_html(e)}'
+                    f'<a class="btn" href="{e["url"]}">View Event →</a></div></article>')
     write('/new-events', layout('Events', '<section class="events">' + ''.join(rows) + '</section>', '/new-events', '/new-events', banner=ASSETS['banner']))
 
     # event pages
     for i, e in enumerate(events):
         d = dt(e['start'])
         where = E(', '.join(x for x in (e.get('venue'), e.get('address')) if x))
-        img = f'<img class="ev-hero" src="{e["image"]}" alt="">' if e.get('image') else ''
-        if e.get('image') and base_name(e['image']) in {base_name(x) for x in re.findall(r'<img src="([^"]+)"', e['html'][:3000])}:
-            img = ''  # the body already opens with the same picture
+        img = ''
         body = (f'<article class="event"><a class="back" href="/new-events">← Back to All Events</a><div class="ev-grid">'
                 f'<aside><h1>{E(e["title"])}</h1><p class="when">{d:%A}, {d:%B} {d.day}, {d.year}<br>{clock(e["start"])} – {clock(e["end"])}</p>'
-                f'{f"<p class=where>{where}</p>" if where else ""}</aside><div class="body">{img}{audio_url(e["html"])}</div></div>'
+                f'{where_html(e)}</aside><div class="body">{img}{audio_url(e["html"])}</div></div>'
                 f'{prevnext(events, i, lambda o: month_day(o["start"]))}</article>')
         write(e['url'], layout(e['title'], body, e['url'], '/new-events', description=e.get('excerpt'), image=e.get('image')))
 

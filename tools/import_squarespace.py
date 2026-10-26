@@ -110,9 +110,20 @@ class Cleaner(HTMLParser):
         if t == 'iframe':
             src = a.get('src') or a.get('data-src') or ''
             self.emit(f'<iframe src="{html.escape(src)}" loading="lazy" allowfullscreen></iframe>'); self.stack.append('iframe'); return
+        if t == 'span':
+            if 'text-color--accent' in cls:
+                self.emit('<span class="accent">'); self.stack.append('span'); return
+            self.stack.append(None); return
         if t in KEEP:
             if t in VOID: self.emit(f'<{t}>'); return
-            self.emit(f'<{t}>'); self.stack.append(t); return
+            classes = []
+            st = (a.get('style') or '').replace(' ', '')
+            m = re.search(r'text-align:(center|right)', st) or re.search(r'text-align--(center|right)', cls)
+            if m and t in ('p', 'h1', 'h2', 'h3', 'h4', 'blockquote', 'figcaption'): classes.append(m.group(1))
+            if 'sqsrte-large' in cls: classes.append('large')
+            if 'sqsrte-small' in cls: classes.append('small')
+            c = f' class="{" ".join(classes)}"' if classes else ''
+            self.emit(f'<{t}{c}>'); self.stack.append(t); return
         if t not in VOID: self.stack.append(None)
     _has_caption = True
     def handle_startendtag(self, t, attrs):
