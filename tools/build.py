@@ -130,6 +130,11 @@ def layout(title, body, url, active='', banner=None, description=None, image=Non
 <footer class="site-footer"><div class="social">{social}</div><div class="flinks">{flinks}</div></footer>
 </body></html>'''
 
+def byline(p):
+    # Squarespace recorded the account owner as author of every post, so no byline is shown by default.
+    # Set `byline: "Name"` in a post's settings to show a real author credit under the title.
+    return f'<div class="byline">{E(p["byline"])}</div>' if p.get('byline') else ''
+
 def card(p):
     cats = p.get('categories') or []
     catlinks = ', '.join(f'<a href="{CFG["category_pages"].get(c, "/")}">{E(c)}</a>' for c in cats)
@@ -183,7 +188,7 @@ def build():
         cats = ' '.join(f'<a href="{CFG["category_pages"].get(c, "/")}">{E(c)}</a>' for c in p.get('categories') or [])
         body = (f'<article class="post"><header class="post-head"><div class="meta"><time>{long_date(p["published"])}</time>'
                 f'{" <span class=dot>•</span> " + cats if cats else ""}</div><h1>{E(p["title"])}</h1>'
-                f'<div class="byline">{E(p.get("author") or "")}</div></header>'
+                f'{byline(p)}</header>'
                 f'<div class="body">{audio_url(p["html"])}</div>{comments_html(p["url"])}'
                 f'{prevnext(posts, i, lambda o: long_date(o["published"]))}</article>')
         write(p['url'], layout(p['title'], body, p['url'], '/', description=p.get('excerpt'), image=p.get('image')))
