@@ -174,3 +174,7 @@ body:has(.events),body:has(.event){background:var(--bg-3)}
   .ev-grid{grid-template-columns:1fr;gap:10px}
   blockquote{padding:0;font-size:1.2em}
 }
+
+/* Contact and Subscribe sit on the lighter grey section, with a white heading, as on Squarespace */
+body.page-contact,body.page-subscribe{background:var(--bg-3)}
+.page-contact .page h1,.page-subscribe .page h1{color:var(--text);font-weight:400}

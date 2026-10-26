@@ -128,7 +128,7 @@ def layout(title, body, url, active='', banner=None, description=None, image=Non
 <meta property="og:title" content="{E(title or CFG['title'])}"><meta property="og:description" content="{E(desc)}"><meta property="og:image" content="{E(og_img)}"><meta property="og:url" content="{canon}"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{ASSETS.get('favicon') or ASSETS['logo']}"><link rel="alternate" type="application/rss+xml" title="Half Wild Field Journal" href="/feed.xml">
 {FONTS}<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">{extra_head}</head>
-<body class="{'has-banner' if (banner or hero) else 'no-banner'}">
+<body class="{'has-banner' if (banner or hero) else 'no-banner'} page-{(url.strip('/').split('/')[0] or 'home')}">
 <header class="site-header"><a class="logo" href="/"><img src="{ASSETS['logo']}" alt="Half Wild"></a>{nav_html(active)}</header>
 {ban}<main>{body}</main>
 <footer class="site-footer"><div class="social">{social}</div><div class="flinks">{flinks}</div></footer>
