@@ -15,6 +15,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.environ.get('HW_DIST') or os.path.join(ROOT, 'dist')
 CFG = json.load(open(os.path.join(ROOT, 'site.json')))
 TZ = ZoneInfo(CFG['timezone'])
+import hashlib
+CSS_V = hashlib.md5(open(os.path.join(ROOT, 'assets', 'site.css'), 'rb').read()).hexdigest()[:8]
 ASSETS = json.load(open(os.path.join(ROOT, 'content', 'site-assets.json')))
 E = html.escape
 
@@ -121,7 +123,7 @@ def layout(title, body, url, active='', banner=None, description=None, image=Non
 <title>{E(full_title)}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{canon}">{robots}
 <meta property="og:title" content="{E(title or CFG['title'])}"><meta property="og:description" content="{E(desc)}"><meta property="og:image" content="{E(og_img)}"><meta property="og:url" content="{canon}"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{ASSETS.get('favicon') or ASSETS['logo']}"><link rel="alternate" type="application/rss+xml" title="Half Wild Field Journal" href="/feed.xml">
-{FONTS}<link rel="stylesheet" href="/assets/site.css">{extra_head}</head>
+{FONTS}<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">{extra_head}</head>
 <body class="{'has-banner' if banner else 'no-banner'}">
 <header class="site-header"><a class="logo" href="/"><img src="{ASSETS['logo']}" alt="Half Wild"></a>{nav_html(active)}</header>
 {ban}<main>{body}</main>
