@@ -81,6 +81,10 @@ class Cleaner(HTMLParser):
             m = re.search(r'\bspan-(\d+)\b', cls)
             if 'col' in cls.split() and m:
                 self.emit(f'<div class="col c{m.group(1)}">'); self.stack.append('div'); return
+            fm = re.search(r'\bfloat-(left|right)\b', cls)
+            if fm:
+                sp = re.search(r'\bspan-(\d+)\b', cls)
+                self.emit(f'<div class="float-{fm.group(1)} w{sp.group(1) if sp else 6}">'); self.stack.append('div'); return
             self.stack.append(None); return
         if t == 'img':
             src = a.get('data-src') or a.get('data-image') or a.get('src')
@@ -212,6 +216,14 @@ for n in PAGES:
             'description': seo.get('seoDescription'), 'format': 'html', 'source': 'squarespace:' + c.get('id', '')}
     open(f'{SITE}/content/pages/{n}.md', 'w').write(fm_dump(meta, body))
     count['pages'] += 1
+
+# About page: founder photo beside the text, as on Squarespace (Fluid Engine layout is not in the HTML)
+ap = f'{SITE}/content/pages/about.md'
+t = open(ap).read()
+m = re.search(r'(?:<div class="float-\w+ w\d+">\s*)?<figure>\s*<img src="(/media/images/[^"]*Andrzej1[^"]*)"[^>]*>\s*</figure>\s*(?:</div>\s*)?<h1>(.*?)</h1>\s*(<p>.*?</p>)', t, re.S)
+if m:
+    t = t.replace(m.group(0), f'<div class="row founder"><div class="col c5"><figure><img src="{m.group(1)}" alt="" loading="lazy"></figure></div><div class="col c7"><h2>{m.group(2)}</h2>{m.group(3)}</div></div>')
+    open(ap, 'w').write(t)
 
 # site-wide assets
 web = json.load(open(RAW + '/json/home.json'))['website']

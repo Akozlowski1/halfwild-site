@@ -51,8 +51,8 @@ main{display:block}
 .excerpt{font-size:15.3px;line-height:1.6;margin-bottom:.3em;white-space:normal}
 .more{font-size:15.3px}
 .dot{margin:0 .35em}
-.cat-hero{height:612px;background:#222 center/cover no-repeat;display:flex;align-items:center}
-.cat-intro{max-width:333px;margin-left:14.6vw;margin-top:40px}
+.cat-hero{height:612px;box-sizing:border-box;background:#222 center/cover no-repeat;padding-top:330px}
+.cat-intro{max-width:333px;margin-left:14.6vw}
 .cat-intro h1{font-size:32px;margin:0 0 .8em}
 .cat-intro p{white-space:normal}
 .sumgrid{max-width:934px;margin:0 auto;padding:110px 0 120px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px 20px}
@@ -74,7 +74,11 @@ main{display:block}
 .body figcaption{font:17px/1.6 var(--body);color:var(--text);margin-top:.8em}
 .body figcaption p{margin:0}
 .accent{color:var(--teal)}
-.center{text-align:center}.right{text-align:right}
+.center{text-align:center}
+.float-left{float:left;margin:0 30px 15px 0}.float-right{float:right;margin:0 0 15px 30px}
+.float-left.w5,.float-right.w5{width:41%}.float-left.w6,.float-right.w6{width:50%}.float-left.w7,.float-right.w7{width:58%}.float-left.w4,.float-right.w4{width:33%}.float-left.w3,.float-right.w3{width:25%}
+.float-left figure,.float-right figure{margin:0}
+.body::after{content:"";display:block;clear:both}.right{text-align:right}
 p.large{font-size:1.2em}p.small{font-size:.85em}
 .row{display:flex;gap:28px;align-items:flex-start;margin:0 -0px}
 .row>.col{flex:1 1 0;min-width:0}
@@ -105,7 +109,7 @@ a.button{background:var(--teal)}
 .pager .prev .pdate::before{content:"‹ "}.pager .next .pdate::after{content:" ›"}
 
 /* events */
-body:has(.events){background:var(--bg-3)}
+body:has(.events),body:has(.event){background:var(--bg-3)}
 .events{max-width:calc(905px + 8vw);padding-top:100px;padding-bottom:80px}
 .ev{display:grid;grid-template-columns:317px 1fr;gap:34px;margin-bottom:68px}
 .ev-thumb{position:relative;display:block}
@@ -162,6 +166,8 @@ body:has(.events){background:var(--bg-3)}
   .grid{grid-template-columns:1fr;gap:48px;padding-left:6vw;padding-right:6vw}
   .grid,.events,.post,.event,.page,.intro{padding-left:6vw;padding-right:6vw}
   .row{flex-direction:column;gap:0}
+  .float-left,.float-right{float:none;width:auto!important;margin:1em 0}
+  .cat-hero{padding-top:200px}
   .ev{grid-template-columns:1fr;gap:14px}
   .sumgrid{grid-template-columns:1fr 1fr;padding:50px 6vw 80px}
   .cat-hero{height:420px}.cat-intro{margin-left:6vw;max-width:80vw}

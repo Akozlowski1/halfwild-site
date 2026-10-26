@@ -16,8 +16,5 @@ source: "squarespace:59a1c73a3e00be570b7c5a72"
 <figcaption>— Stephen Lezak, “Awe in the Anthropocene,” Imagine5</figcaption>
 </figure>
 <hr>
- 
-<div class="row founder"><div class="col c5"><figure>
-<img src="/media/images/1a0b6d-Andrzej1.jpg" alt="" width="2642" height="3523" loading="lazy">
-</figure></div><div class="col c7"><h2>Andrzej Kozlowski, Founder</h2><p>Andrzej Kozlowski is a songwriter, soundscape recordist, and philanthropic advisor based in Portland, Oregon. He curates songs, stories, and gatherings that deepen ecological understanding and a sense of belonging to the living world.</p></div></div>
+ <div class="row founder"><div class="col c5"><figure><img src="/media/images/1a0b6d-Andrzej1.jpg" alt="" loading="lazy"></figure></div><div class="col c7"><h2>Andrzej Kozlowski, Founder</h2><p>Andrzej Kozlowski is a songwriter, soundscape recordist, and philanthropic advisor based in Portland, Oregon. He curates songs, stories, and gatherings that deepen ecological understanding and a sense of belonging to the living world.</p></div></div>
  </div></div>
