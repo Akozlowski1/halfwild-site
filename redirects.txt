@@ -14,3 +14,4 @@
 /songs/*                                             /field-journal-home/:splat 301
 /new-events/category/*                               /new-events              301
 /blog/*                                              /field-journal-home/:splat 301
+/join-half-wild                                      /subscribe               301
