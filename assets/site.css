@@ -4,7 +4,7 @@
   --bg:#1e1e1e; --bg-2:#2b2b2b; --bg-3:#333; --text:#fff; --muted:rgba(255,255,255,.7);
   --teal:rgb(54,179,168); --tan:rgb(211,203,187); --line:rgba(255,255,255,.15);
   --title:"Amatic SC",cursive; --body:Georgia,"Times New Roman",serif;
-  --meta:"Nunito Sans",system-ui,sans-serif; --ui:"Montserrat",system-ui,sans-serif;
+  --meta:"Quicksand",system-ui,sans-serif; --ui:"Figtree",system-ui,sans-serif;
   --page:1104px; --read:828px;
 }
 *{box-sizing:border-box}
@@ -44,7 +44,7 @@ main{display:block}
 /* post grid */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px 50px;padding-top:58px;padding-bottom:80px;max-width:calc(var(--page) + 8vw)}
 .card .thumb img{width:100%;aspect-ratio:3/2;object-fit:cover}
-.card .meta{margin-top:34px;font-size:15px}
+.card .meta{margin-top:34px;font-size:16px}
 .card .meta a{color:var(--text);text-decoration:none}
 .card-title{font-size:27px;margin:.25em 0 .35em}
 .card-title a{text-decoration:none}
@@ -58,7 +58,7 @@ main{display:block}
 /* post */
 .post{max-width:var(--read);padding-top:60px;padding-bottom:60px}
 .post-head{text-align:center;margin-bottom:40px}
-.post-head .meta{font-size:15px}
+.post-head .meta{font-size:17px}
 .post-head .meta a{color:var(--text);text-decoration:none}
 .post-head h1{margin-top:.6em}
 .byline{font-size:15px;color:var(--muted)}

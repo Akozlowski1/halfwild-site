@@ -30,4 +30,4 @@ Works on either free host:
 ## Open items (see the strategic plan)
 - Contact form needs a handler (`site.json` → `forms.contact_action`). Until then the page shows a placeholder.
 - Subscribe needs the Mailchimp embed code (`site.json` → `forms.subscribe_embed_html`).
-- Fonts: Omnes Pro and Proxima Nova replaced by the free Nunito Sans and Montserrat (assumption pending the Adobe Fonts question).
+- Fonts: Omnes Pro and Proxima Nova (Adobe fonts licensed through Squarespace) replaced by the free Quicksand Light and Figtree, chosen 2026-10-26 by side-by-side comparison. Body text is Georgia, as on Squarespace.
