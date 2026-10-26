@@ -178,3 +178,15 @@ body:has(.events),body:has(.event){background:var(--bg-3)}
 /* Contact and Subscribe sit on the lighter grey section, with a white heading, as on Squarespace */
 body.page-contact,body.page-subscribe{background:var(--bg-3)}
 .page-contact .page h1,.page-subscribe .page h1{color:var(--text);font-weight:400}
+
+/* Signup form (Mailchimp), styled like the Squarespace form: underlined fields, dark pill button */
+.signup{max-width:none;margin-top:30px}
+.signup fieldset{border:0;padding:0;margin:0 0 6px;display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.signup legend{font:15px var(--body);padding:0;margin-bottom:8px;color:var(--text)}
+.signup label{font:15px var(--body);color:var(--text)}
+.signup fieldset label{font-size:13px}
+.signup .req{color:var(--muted);font-size:.85em}
+.signup input{background:transparent;color:var(--text);border:0;border-bottom:1px solid rgba(255,255,255,.6);padding:8px 2px;margin-top:4px}
+.signup button{background:#1e1e1e;font:600 13px var(--ui);letter-spacing:2px;padding:16px 26px}
+.mc-badge{margin-top:24px;opacity:.7}.mc-badge img{width:160px;height:auto;filter:invert(1)}
+@media (max-width:767px){.signup fieldset{grid-template-columns:1fr}}
