@@ -287,6 +287,19 @@ def extras():
         open(path, 'w').write(f'<!doctype html><meta charset="utf-8"><title>Redirecting</title><link rel="canonical" href="{CFG["base_url"]}{dst}">'
                               f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={dst}"><a href="{dst}">Continue</a>')
 
+def apply_base_path():
+    """Staging only: when the site is served from a sub-folder (e.g. user.github.io/halfwild-site),
+    prefix every root-relative link with HW_BASE. Unset for the live domain."""
+    base = os.environ.get('HW_BASE', '').rstrip('/')
+    if not base: return
+    for f in glob.glob(os.path.join(DIST, '**', '*.html'), recursive=True):
+        t = open(f, encoding='utf-8').read()
+        t = re.sub(r'(href|src|action)="/(?!/)', lambda m: f'{m.group(1)}="{base}/', t)
+        t = re.sub(r"url\('/(?!/)", f"url('{base}/", t)
+        t = t.replace('content="0; url=/', f'content="0; url={base}/')
+        open(f, 'w', encoding='utf-8').write(t)
+
 if __name__ == '__main__':
     build()
+    apply_base_path()
     print(f'built {len(written)} pages into {DIST}')
