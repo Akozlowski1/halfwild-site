@@ -1,0 +1,16 @@
+# Old Squarespace addresses that change. Format: from  to  status
+/field-journal-home                                  /                        301
+/field-journal-home/                                 /                        301
+/field-journal                                       /                        301
+/about-1                                             /about                   301
+/field-journal-home/category/Essays+%26+Field+Notes  /essays-field-notes      301
+/field-journal-home/category/Essays%20%26%20Field%20Notes /essays-field-notes 301
+/field-journal-home/category/Conversations           /conversations           301
+/field-journal-home/category/Songs+%26+Soundscapes   /songs-soundscapes       301
+/field-journal-home/category/Songs%20%26%20Soundscapes /songs-soundscapes     301
+/field-journal-home/category/Profiles+%26+Portraits  /profiles-portraits      301
+/field-journal-home/category/Profiles%20%26%20Portraits /profiles-portraits   301
+/field-journal-home/tag/*                            /                        301
+/songs/*                                             /field-journal-home/:splat 301
+/new-events/category/*                               /new-events              301
+/blog/*                                              /field-journal-home/:splat 301

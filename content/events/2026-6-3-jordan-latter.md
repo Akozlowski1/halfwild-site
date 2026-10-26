@@ -1,0 +1,18 @@
+---
+title: "Jordan Latter — Forest Guardian of Mt. Hood: A Half Wild Conversation"
+url: "/new-events/2026/6/3/jordan-latter"
+published: 1778628019208
+author: "Andrzej Kozlowski"
+excerpt: "Jordan Latter is a forest ecologist, policy advocate, and Forest Watch Program Manager at Bark, one of the Pacific Northwest's most active defenders of Mt. Hood National Forest. Join us for a conversation about old forests, the fight over the Roadless Rule, and what it means to protect a place you love."
+image: "/media/images/1e156a-IMG_0925.jpg"
+format: "html"
+source: "squarespace:6a03ad3400acf4158a515680"
+start: 1780536600796
+end: 1780547400796
+---
+<div class="row"><div class="col c12">
+<figure>
+<img src="/media/images/257d7a-IMG_0925.jpg" alt="" width="3738" height="2826" loading="lazy">
+</figure>
+<p><a href="https://bark-out.org/news/author/jordanbark-out-org/" target="_blank" rel="noopener"><strong>Jordan Latter</strong></a> knows how to read a forest. Not just its canopy and understory, but its legal status, its fragility in the face of policies written far from the forest floor. He has spent years learning both languages, the ecological and the bureaucratic, because in the Pacific Northwest today, you cannot defend one without the other.</p><p>Jordan is the Forest Watch Program Manager at <a href="https://bark-out.org/"><strong>Bark</strong></a>, the conservation watchdog dedicated to protecting the forests, waters, and wildlife of Mt. Hood National Forest. He came to this work the long way: first as a wildlife technician in the Sierra Nevada, tracking spotted owls and fishers through old-growth canopy; then through a Master's from Harvard University Extension School focused on forest thinning practices on federal lands across the Pacific Northwest; then as a Bark volunteer, kneeling in the mud on field surveys before anyone offered him a job. That trajectory, from wonder to rigor to advocacy, runs through everything he does.</p><p>Jordan is also one of the voices in the current fight over the Roadless Rule, the 25-year-old protection that shields nearly 60 million acres of national forest, including two million in Oregon, from road construction, logging, and mining. Roadless areas are not simply undeveloped land held in reserve. They are among the most ecologically intact places remaining in the American West: old forests, unbroken watersheds, connected habitat corridors that wolverines, grizzly bears, salmon, and Pacific martens depend on for survival. More than 350 municipal watersheds lie within National Forest roadless areas, supplying clean drinking water to tens of millions of people. </p><p>Roads change all of that. They fragment habitat, introduce invasive species, send sediment into streams, and open the interior of forests to disturbance that takes centuries to undo. Studies spanning 144 million acres across 35 National Forests found that over 70% of wildlife species analyzed were negatively affected by roads. Every roadless area supports at least two protected species; the median supports ten. These are not peripheral landscapes. They are the connective tissue of the living West.</p><p>Our evening will be a conversation about forests, about watchdogging, and about what it means to defend a place you love.</p><p><strong>In the spirit of communal sharing, this event is a potluck. Please arrive early and bring something if inspired. Space is limited. </strong><a href="https://events.humanitix.com/jordan-latter-forest-guardian-of-mt-hood-a-half-wild-conversation?" target="_blank" rel="noopener"><strong>Register to secure your place</strong></a><strong>, and the location will be shared by email upon registration.</strong></p>
+</div></div>

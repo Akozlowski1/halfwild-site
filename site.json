@@ -1,0 +1,34 @@
+{
+  "title": "Half Wild",
+  "base_url": "https://halfwild.earth",
+  "timezone": "America/Los_Angeles",
+  "description": "Half Wild is a Pacific Coast initiative featuring writers, scientists, filmmakers, musicians, and artists who translate the Pacific Rim's living systems into felt experience.",
+  "nav": [
+    {"title": "Field Journal", "url": "/", "children": [
+      {"title": "Field Journal Home", "url": "/"},
+      {"title": "Essays & Field Notes", "url": "/essays-field-notes"},
+      {"title": "Conversations", "url": "/conversations"},
+      {"title": "Songs & Soundscapes", "url": "/songs-soundscapes"},
+      {"title": "Profiles & Portraits", "url": "/profiles-portraits"}]},
+    {"title": "Events", "url": "/new-events"},
+    {"title": "Subscribe", "url": "/subscribe"},
+    {"title": "About", "url": "/about", "children": [
+      {"title": "About Half Wild", "url": "/about"},
+      {"title": "For Contributors", "url": "/for-contributors"},
+      {"title": "Editorial Circle", "url": "/editorial-circle"}]}
+  ],
+  "footer_links": [{"title": "About", "url": "/about"}, {"title": "Contact", "url": "/contact"}, {"title": "Subscribe", "url": "/subscribe"}],
+  "social": [{"name": "Facebook", "url": "https://www.facebook.com/halfwildearth"}, {"name": "Instagram", "url": "https://www.instagram.com/halfwild.earth"}],
+  "category_pages": {
+    "Essays & Field Notes": "/essays-field-notes",
+    "Conversations": "/conversations",
+    "Songs & Soundscapes": "/songs-soundscapes",
+    "Profiles & Portraits": "/profiles-portraits"
+  },
+  "unlisted_pages": ["/home-alt-bedford", "/editorial-circle1"],
+  "forms": {
+    "contact_action": "",
+    "subscribe_embed_html": ""
+  },
+  "audio_base_url": ""
+}
