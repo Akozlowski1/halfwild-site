@@ -190,3 +190,4 @@ body.page-contact,body.page-subscribe{background:var(--bg-3)}
 .signup button{background:#1e1e1e;font:600 13px var(--ui);letter-spacing:2px;padding:16px 26px}
 .mc-badge{margin-top:24px;opacity:.7}.mc-badge img{width:160px;height:auto;filter:invert(1)}
 @media (max-width:767px){.signup fieldset{grid-template-columns:1fr}}
+.signup label{display:block;width:100%}.signup input{display:block;width:100%;box-sizing:border-box}.signup{width:100%}
