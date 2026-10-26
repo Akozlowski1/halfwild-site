@@ -9,7 +9,7 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 var(--body)}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--teal)}
 a:hover{opacity:.85}
@@ -132,6 +132,7 @@ body:has(.events){background:var(--bg-3)}
 
 /* phones */
 @media (max-width:767px){
+  body{font-size:16px}
   .nav{display:none}
   .burger{display:block;position:relative;padding-top:20px}
   .burger summary{list-style:none;cursor:pointer;width:30px;display:flex;flex-direction:column;gap:6px}
