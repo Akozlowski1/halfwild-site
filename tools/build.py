@@ -252,12 +252,22 @@ def form_html(url):
         return '<p class="pending">[Subscribe form: the Mailchimp signup form goes here once its embed code is added to site.json.]</p>'
     if url == '/contact':
         if f.get('contact_action'):
-            return (f'<form class="form" method="post" action="{E(f["contact_action"])}">'
-                    '<label>Name<input name="name" required autocomplete="name"></label>'
-                    '<label>Email Address<input type="email" name="email" required autocomplete="email"></label>'
-                    '<label>Subject<input name="subject" required></label>'
-                    '<label>Message<textarea name="message" rows="7" required></textarea></label>'
-                    '<button type="submit">Submit</button></form>')
+            # Same fields as the Squarespace contact form. Sent to Formspree, which emails each message on.
+            return (f'<form class="form signup contact" method="post" action="{E(f["contact_action"])}">'
+                    '<fieldset class="name"><legend>Name</legend>'
+                    '<label>First Name <span class="req">(required)</span><input name="first_name" required autocomplete="given-name"></label>'
+                    '<label>Last Name <span class="req">(required)</span><input name="last_name" required autocomplete="family-name"></label></fieldset>'
+                    '<label>Email Address <span class="req">(required)</span><input type="email" name="email" required autocomplete="email"></label>'
+                    '<label>Subject <span class="req">(required)</span><input name="subject" required></label>'
+                    '<label>Message <span class="req">(required)</span><textarea name="message" rows="6" required></textarea></label>'
+                    '<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px" aria-hidden="true">'
+                    '<button type="submit">Submit</button><p class="form-status" role="status" hidden></p></form>'
+                    '<script>(function(){var f=document.querySelector("form.contact");if(!f)return;var s=f.querySelector(".form-status");'
+                    'f.addEventListener("submit",function(e){e.preventDefault();var b=f.querySelector("button");b.disabled=true;'
+                    'fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}}).then(function(r){'
+                    'if(r.ok){f.querySelectorAll("fieldset,label,button").forEach(function(x){x.hidden=true});s.textContent="Thank you!";}'
+                    'else{s.textContent="Sorry, something went wrong. Please try again.";b.disabled=false;}s.hidden=false;})'
+                    '.catch(function(){s.textContent="Sorry, something went wrong. Please try again.";s.hidden=false;b.disabled=false;});});})();</script>')
         return '<p class="pending">[Contact form: needs a form handler; see site.json "contact_action".]</p>'
     return ''
 

@@ -192,3 +192,5 @@ body.page-contact,body.page-subscribe{background:var(--bg-3)}
 @media (max-width:767px){.signup fieldset{grid-template-columns:1fr}}
 .signup label{display:block;width:100%}.signup input{display:block;width:100%;box-sizing:border-box}.signup{width:100%}
 @media (max-width:767px){.row{align-items:stretch}}
+.signup textarea{display:block;width:100%;box-sizing:border-box;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.6);padding:8px;margin-top:6px;font:16px var(--body)}
+.form-status{font-size:17px;margin-top:20px}
