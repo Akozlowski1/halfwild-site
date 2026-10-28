@@ -97,6 +97,22 @@ a.button{background:var(--teal)}
 #echothread .et-header,#echothread .et-avatar,#echothread .et-format-hint,#echothread .et-compose-toolbar-left,#echothread .et-compose-signin-band,#echothread .et-empty-state,#echothread .et-compose-note{display:none!important}
 #echothread .et-footer{border:0!important;text-align:right}
 #echothread .et-footer a,#echothread .et-badge{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;font:300 12px var(--meta)!important;color:var(--muted)!important;opacity:.7}
+/* EchoThread, restyled to match the site's own forms and the earlier comments */
+#echothread,#echothread *{font-family:var(--body)!important;-webkit-font-smoothing:antialiased}
+#echothread .et-compose-area,#echothread .et-compose-inner,#echothread .et-compose-toolbar{background:transparent!important;border:0!important;box-shadow:none!important;padding-left:0!important;padding-right:0!important}
+#echothread .et-guest-fields{gap:10px!important}
+#echothread .et-guest-fields input{background:transparent!important;color:var(--text)!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.6)!important;border-radius:0!important;padding:8px 2px!important;font-size:16px!important;box-shadow:none!important}
+#echothread .et-compose-editor{background:transparent!important;color:var(--text)!important;border:1px solid rgba(255,255,255,.6)!important;border-radius:0!important;padding:10px!important;margin-top:14px!important;min-height:110px;font-size:16px!important}
+#echothread input::placeholder,#echothread .et-compose-editor:empty:before{color:var(--muted)!important;opacity:1}
+#echothread .et-compose-toolbar{justify-content:flex-end!important;padding-top:14px!important}
+#echothread .et-send-btn,#echothread .et-submit-btn,#echothread .et-send-btn *{font:600 14px/1 var(--ui)!important;letter-spacing:2px!important;text-transform:uppercase!important}
+#echothread .et-send-btn,#echothread .et-submit-btn{background:var(--teal)!important;color:#fff!important;border:0!important;border-radius:300px!important;padding:16px 30px!important;box-shadow:none!important}
+#echothread .et-comments-list{margin-top:30px}
+#echothread .et-comment-bubble{background:transparent!important;padding:0!important;border-radius:0!important}
+#echothread .et-comment-author,#echothread .et-comment-author *{font:400 17px var(--meta)!important;color:var(--text)!important}
+#echothread .et-comment-text,#echothread .et-comment-text *{font:17px/1.6 var(--body)!important;color:var(--text)!important}
+#echothread .et-comment-actions,#echothread .et-comment-actions *{font:300 14px var(--meta)!important;color:var(--muted)!important}
+#echothread .et-comment-share{display:none!important}
 
 .comments{margin-top:60px;border-top:1px solid var(--line);padding-top:20px}
 .comments ul{list-style:none;padding:0}
