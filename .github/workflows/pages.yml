@@ -22,9 +22,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/build.py
-        env:
-          # Staging address is a sub-folder. Remove this line at cutover, when the CNAME file is added.
-          HW_BASE: /halfwild-site
+      # Live at https://halfwild.earth (custom domain set in the repository's Pages settings, 2026-10-28).
+      # For a sub-folder staging address, set env HW_BASE: /halfwild-site on the step above.
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
