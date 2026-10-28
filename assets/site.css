@@ -92,6 +92,12 @@ a.button,.btn{display:inline-block;font:600 14px/1 var(--ui);letter-spacing:2px;
 a.button{background:var(--teal)}
 
 /* comments */
+/* EchoThread: keep only name, email, comment and Post */
+#echothread .et-widget{border:0!important;background:transparent!important;padding:0!important;box-shadow:none!important}
+#echothread .et-header,#echothread .et-avatar,#echothread .et-format-hint,#echothread .et-compose-toolbar-left,#echothread .et-compose-signin-band,#echothread .et-empty-state,#echothread .et-compose-note{display:none!important}
+#echothread .et-footer{border:0!important;text-align:right}
+#echothread .et-footer a,#echothread .et-badge{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;font:300 12px var(--meta)!important;color:var(--muted)!important;opacity:.7}
+
 .comments{margin-top:60px;border-top:1px solid var(--line);padding-top:20px}
 .comments ul{list-style:none;padding:0}
 .comments li{margin:0 0 26px}
