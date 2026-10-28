@@ -306,10 +306,13 @@ def extras():
             continue
         stubs.append((src, dst))
     for src, dst in stubs:
-        path = os.path.join(DIST, urllib.parse.unquote_plus(src).strip('/'), 'index.html')
-        if os.path.exists(path) or src.strip('/') == '': continue
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        open(path, 'w').write(f'<!doctype html><meta charset="utf-8"><title>Redirecting</title><link rel="canonical" href="{CFG["base_url"]}{dst}">'
+        if src.strip('/') == '': continue
+        # GitHub Pages decodes %26 to & but keeps + literally, so write both spellings of the folder name
+        for folder in {urllib.parse.unquote(src).strip('/'), urllib.parse.unquote_plus(src).strip('/')}:
+          path = os.path.join(DIST, folder, 'index.html')
+          if os.path.exists(path): continue
+          os.makedirs(os.path.dirname(path), exist_ok=True)
+          open(path, 'w').write(f'<!doctype html><meta charset="utf-8"><title>Redirecting</title><link rel="canonical" href="{CFG["base_url"]}{dst}">'
                               f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={dst}"><a href="{dst}">Continue</a>')
 
 def apply_base_path():
