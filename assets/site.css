@@ -136,7 +136,7 @@ body:has(.events),body:has(.event){background:var(--bg-3)}
 
 /* pages */
 .page{max-width:var(--read);padding-top:70px;padding-bottom:80px}
-.page h1{font-size:30px}
+.page h1{font-size:32px}
 .page .row{gap:36px}
 .form label{display:block;font:300 15px var(--meta);margin-bottom:16px}
 .form input,.form textarea{display:block;width:100%;margin-top:6px;padding:12px;background:#fff;color:#111;border:0;font:16px var(--body)}
@@ -177,7 +177,7 @@ body:has(.events),body:has(.event){background:var(--bg-3)}
 
 /* Contact and Subscribe sit on the lighter grey section, with a white heading, as on Squarespace */
 body.page-contact,body.page-subscribe{background:var(--bg-3)}
-.page-contact .page h1,.page-subscribe .page h1{color:var(--text);font-weight:400}
+.page-subscribe .page h1{color:var(--muted)}
 
 /* Signup form (Mailchimp), styled like the Squarespace form: underlined fields, dark pill button */
 .signup{max-width:none;margin-top:30px}
