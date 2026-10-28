@@ -170,7 +170,7 @@ def comments_html(url):
     if cfg.get('provider') == 'echothread':
         out += ('' if cs else '<h2>Comments</h2>') + (
             f'<div id="echothread" data-shortname="{E(cfg["shortname"])}" data-api-key="{E(cfg["site_key"])}" '
-            f'data-identifier="{E(url)}" data-page-url="{CFG["base_url"]}{E(url)}" data-lang="en" data-theme="dark" data-accent-color="#36b3a8"></div>'
+            f'data-identifier="{E(url)}" data-page-url="{CFG["base_url"]}{E(url)}" data-lang="en" data-theme="#1e1e1e" data-accent-color="#36b3a8"></div>'
             '<script src="https://cdn.echothread.io/widget.js" async></script>')
     return out + '</section>'
 
