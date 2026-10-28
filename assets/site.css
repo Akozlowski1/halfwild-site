@@ -121,6 +121,10 @@ a.button{background:var(--teal)}
 .cmeta{font-family:var(--meta);margin-bottom:6px}
 .cmeta time{color:var(--muted);font-size:14px;margin-left:8px}
 .comments .note{font:300 14px var(--meta);color:var(--muted)}
+.comments .earlier{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.comments .earlier h3{font-size:24px;color:var(--muted);margin:0 0 2px}
+.comments .earlier ul{margin-top:22px}
+#echothread+.note{margin-top:10px}
 
 /* pager */
 .pager{display:flex;justify-content:space-between;gap:30px;margin-top:70px}
