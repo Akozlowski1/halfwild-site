@@ -95,5 +95,11 @@
     "contact_action": "https://formspree.io/f/xaeeoapg",
     "subscribe_embed_html": "<form class=\"form signup\" action=\"https://earth.us16.list-manage.com/subscribe/post?u=6ef9e4858e43ab8875c734663&amp;id=cd18f000f1&amp;f_id=00a779e0f0\" method=\"post\" name=\"mc-embedded-subscribe-form\">\n<fieldset class=\"name\"><legend>Name</legend>\n<label>First Name <span class=\"req\">(required)</span><input type=\"text\" name=\"FNAME\" required autocomplete=\"given-name\"></label>\n<label>Last Name <span class=\"req\">(required)</span><input type=\"text\" name=\"LNAME\" required autocomplete=\"family-name\"></label>\n</fieldset>\n<label>Email <span class=\"req\">(required)</span><input type=\"email\" name=\"EMAIL\" required autocomplete=\"email\"></label>\n<label>Zip Code <span class=\"req\">(required)</span><input type=\"text\" name=\"MMERGE3\" required autocomplete=\"postal-code\"></label>\n<div aria-hidden=\"true\" style=\"position:absolute;left:-5000px\"><input type=\"text\" name=\"b_6ef9e4858e43ab8875c734663_cd18f000f1\" tabindex=\"-1\" value=\"\"></div>\n<button type=\"submit\" name=\"subscribe\">Submit</button>\n<p class=\"mc-badge\"><a href=\"http://eepurl.com/iUiWhM\" title=\"Mailchimp\"><img src=\"https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg\" alt=\"Intuit Mailchimp\" width=\"160\" height=\"30\"></a></p>\n</form>"
   },
-  "audio_base_url": ""
+  "audio_base_url": "",
+  "comments": {
+    "provider": "echothread",
+    "shortname": "half-wild",
+    "site_key": "dOEE7spUUVo49zE1pR4wmUhu5OFbRj0L-nXg2mnTg8w",
+    "note": "EchoThread site key is public by design and only works on halfwild.earth."
+  }
 }

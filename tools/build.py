@@ -160,10 +160,19 @@ def prevnext(items, i, label_fn):
     return out + '</nav>'
 
 def comments_html(url):
-    cs = comments.get(url)
-    if not cs: return ''
-    rows = ''.join(f'<li class="depth{c.get("depth", 0)}"><div class="cmeta"><strong>{E(c["name"] or "Anonymous")}</strong> <time>{long_date(c["date"])}</time></div>{c["body"]}</li>' for c in sorted(cs, key=lambda c: -c['date']))
-    return f'<section class="comments"><h2>Comments ({len(cs)})</h2><ul>{rows}</ul><p class="note">Comments are closed. These were left on the earlier version of this site.</p></section>'
+    """Earlier Squarespace comments (read-only) followed by the live EchoThread comment box."""
+    cs = comments.get(url) or []
+    out = '<section class="comments">'
+    if cs:
+        rows = ''.join(f'<li class="depth{c.get("depth", 0)}"><div class="cmeta"><strong>{E(c["name"] or "Anonymous")}</strong> <time>{long_date(c["date"])}</time></div>{c["body"]}</li>' for c in sorted(cs, key=lambda c: -c['date']))
+        out += f'<h2>Comments ({len(cs)})</h2><ul>{rows}</ul><p class="note">Earlier comments, from the previous version of this site.</p>'
+    cfg = CFG.get('comments') or {}
+    if cfg.get('provider') == 'echothread':
+        out += ('' if cs else '<h2>Comments</h2>') + (
+            f'<div id="echothread" data-shortname="{E(cfg["shortname"])}" data-api-key="{E(cfg["site_key"])}" '
+            f'data-identifier="{E(url)}" data-page-url="{CFG["base_url"]}{E(url)}" data-lang="en" data-theme="dark" data-accent-color="#36b3a8"></div>'
+            '<script src="https://cdn.echothread.io/widget.js" async></script>')
+    return out + '</section>'
 
 # ---------------- writing ----------------
 written = []
